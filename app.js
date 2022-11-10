@@ -27,7 +27,9 @@ app.post("/", function(req, res) {
             const weatherDescription = weatherData.weather[0].description;
             const weatherIcon = weatherData.weather[0].icon;
 
-            res.write("The temperature is " + temp);
+            res.write("The current temperature at " + query + "is " + temp);
+            res.write("People at " + query + " are currently experiencing " + weatherDescription);
+            res.write(weatherIcon);
             res.send();
         })
     })
