@@ -16,8 +16,9 @@ app.post("/", function(req, res) {
 
     const query = req.body.cityName;
     const unit = req.body.unit;
+    const newUnit = unit.toLowerCase()
     const apiKey = "0d3869a3d174ce74a6c597cde11593c7";
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&units=" + unit + "&appid=" + apiKey;
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&units=" + newUnit + "&appid=" + apiKey;
 
     https.get(url, function(resp) {
         resp.on("data", function(data) {
@@ -30,11 +31,11 @@ app.post("/", function(req, res) {
 
             var unitOutuput;
 
-            if (unit == "metric") {
+            if (newUnit == "metric") {
                 unitOutuput = "Celsius";
-            } else if (unit == "imperial") {
+            } else if (newUnit == "imperial") {
                 unitOutuput = "Farenheit";
-            } else if (unit == "standard") {
+            } else if (newUnit == "standard") {
                 unitOutuput = "Kelvin";
             }
 
