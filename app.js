@@ -26,10 +26,22 @@ app.post("/", function(req, res) {
             const temp = weatherData.main.temp;
             const weatherDescription = weatherData.weather[0].description;
             const weatherIcon = weatherData.weather[0].icon;
+            const weatherImg = "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
 
-            res.write("The current temperature at " + query + "is " + temp);
-            res.write("People at " + query + " are currently experiencing " + weatherDescription);
-            res.write(weatherIcon);
+            var unitOutuput;
+
+            if (unit == "metric") {
+                unitOutuput = "Celsius";
+            } else if (unit == "imperial") {
+                unitOutuput = "Farenheit";
+            } else if (unit == "standard") {
+                unitOutuput = "Kelvin";
+            }
+
+            res.write("<h1>The current temperature at " + query + " is " + temp + " degrees " + unitOutuput + "</h1>");
+            res.write("</br> <p>People at " + query + " are currently experiencing " + weatherDescription + "</p>");
+            res.write("<img src=" + weatherImg + "alt='Image of the Weather'>");
+            res.write(weatherImg);
             res.send();
         })
     })
