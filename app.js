@@ -35,7 +35,7 @@ app.post("/", function(req, res) {
                 unitOutuput = "Celsius";
             } else if (newUnit == "imperial") {
                 unitOutuput = "Farenheit";
-            } else if (newUnit == "standard") {
+            } else {
                 unitOutuput = "Kelvin";
             }
 
