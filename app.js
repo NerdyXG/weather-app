@@ -40,8 +40,7 @@ app.post("/", function(req, res) {
 
             res.write("<h1>The current temperature at " + query + " is " + temp + " degrees " + unitOutuput + "</h1>");
             res.write("</br> <p>People at " + query + " are currently experiencing " + weatherDescription + "</p>");
-            res.write("<img src=" + weatherImg + "alt='Image of the Weather'>");
-            res.write(weatherImg);
+            res.write("<img src=" + weatherImg + " alt='Image of the Weather'>");
             res.send();
         })
     })
